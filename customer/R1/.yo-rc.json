@@ -1,0 +1,582 @@
+{
+  "generator-cedrus-api": {
+    "haveConfigFile": true,
+    "discover": {
+      "ask": false,
+      "apiConsumes": [
+        "application/json"
+      ],
+      "apiProduces": [
+        "application/json"
+      ]
+    },
+    "detail": {
+      "ask": false,
+      "isPublic": true,
+      "httpMethods": [
+        "get",
+        "put",
+        "post"
+      ],
+      "httpStatusCodes": [
+        "204",
+        "404",
+        "500"
+      ],
+      "versioning": {
+        "enabled": true,
+        "type": "uri",
+        "versionNumber": [
+          "v1"
+        ],
+        "uriOrder": "versionNumberFirst",
+        "contentTypeOrder": "versionNumberFirst",
+        "customHeaderName": "versionNumberFirst"
+      },
+      "apiData": {
+        "returnDataType": "No"
+      },
+      "records": {
+        "limit": 10
+      },
+      "cache": {
+        "RedisEnable": false,
+        "RedisHost": "pub-redis-19334.dal-05.1.sl.garantiadata.com",
+        "RedisPort": "19334",
+        "RedisPassword": "zKvyYzznhsdvYwgq",
+        "RedisExpire": 180
+      },
+      "pagination": {
+        "PaginationEnable": false
+      },
+      "filter": {
+        "FilterEnable": false
+      },
+      "security": {
+        "enabled": false,
+        "type": "none"
+      },
+      "logging": {
+        "enabled": false
+      }
+    },
+    "deploy": {
+      "ask": false,
+      "apiApplicationType": "nodejs",
+      "openWhisk": {
+        "OpenWhiskEnable": false
+      },
+      "tls": {
+        "TLSEnable": false
+      },
+      "cloudFoundry": {
+        "appName": "",
+        "appMemory": ""
+      },
+      "javaOptions": {
+        "basePackage": "io.cedrus.apigen",
+        "packagingType": "jar",
+        "framework": [
+          "jaxrs",
+          "jaxrs"
+        ],
+        "springBootDeployment": "tomcat"
+      }
+    },
+    "multipleResources": {
+      "enabled": true,
+      "resources": [
+        {
+          "resourceName": "Customer",
+          "jsonFilePath": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"},\"firstName\":{\"type\":\"string\"},\"lastName\":{\"type\":\"string\"},\"age\":{\"type\":\"number\"},\"address\":{\"type\":\"object\",\"properties\":{\"streetAddress\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"state\":{\"type\":\"string\"},\"zipCode\":{\"type\":\"string\"}},\"required\":[\"streetAddress\",\"city\",\"state\",\"zipCode\"]},\"phoneNumber\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"type\":{\"type\":\"string\"},\"number\":{\"type\":\"string\"}},\"required\":[\"type\",\"number\"]}}},\"required\":[\"id\",\"firstName\",\"lastName\",\"age\",\"address\",\"phoneNumber\"]}",
+          "isPublic": true,
+          "httpMethods": [
+            "get",
+            "put",
+            "post"
+          ],
+          "httpStatusCodes": [
+            "204",
+            "404",
+            "500"
+          ],
+          "requireTestDataType": "Test Data",
+          "apiFakerMappingFileProvided": true,
+          "apiFakeMappingFileType": "object",
+          "apiFakerMappingFileLocation": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "faker": "random.number"
+              },
+              "firstName": {
+                "type": "string",
+                "faker": "name.firstName"
+              },
+              "lastName": {
+                "type": "string",
+                "faker": "name.lastName"
+              },
+              "age": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 120
+              },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "streetAddress": {
+                    "type": "string",
+                    "faker": "address.streetAddress"
+                  },
+                  "city": {
+                    "type": "string",
+                    "faker": "address.city"
+                  },
+                  "state": {
+                    "type": "string",
+                    "faker": "address.state"
+                  },
+                  "zipCode": {
+                    "type": "string",
+                    "faker": "address.zipCode"
+                  }
+                },
+                "required": [
+                  "streetAddress",
+                  "city",
+                  "state",
+                  "zipCode"
+                ]
+              },
+              "phoneNumber": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "Home",
+                        "Office"
+                      ]
+                    },
+                    "number": {
+                      "type": "string",
+                      "faker": "phone.phoneNumber"
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "number"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "id",
+              "firstName",
+              "lastName",
+              "age",
+              "address",
+              "phoneNumber"
+            ]
+          },
+          "apiFakerMappingJsonType": "Data Schema",
+          "recordsLimit": "5",
+          "requireQuery": false,
+          "whichParameter": null,
+          "queryParameters": {
+            "get": [
+              {
+                "name": "revision",
+                "in": "header",
+                "description": "Needed Revision",
+                "required": true,
+                "type": "string",
+                "default": "R1"
+              }
+            ],
+            "put": [
+              {
+                "name": "revision",
+                "in": "header",
+                "description": "Needed Revision",
+                "required": true,
+                "type": "string",
+                "default": "R1"
+              }
+            ],
+            "post": [
+              {
+                "name": "revision",
+                "in": "header",
+                "description": "Needed Revision",
+                "required": true,
+                "type": "string",
+                "default": "R1"
+              }
+            ]
+          },
+          "fake_data": [
+            {
+              "id": 64097,
+              "firstName": "Adrianna",
+              "lastName": "Abbott",
+              "age": 106,
+              "address": {
+                "streetAddress": "5099 Una Hills",
+                "city": "Tierraborough",
+                "state": "Wyoming",
+                "zipCode": "17774"
+              },
+              "phoneNumber": [
+                {
+                  "type": "Home",
+                  "number": "1-775-493-1938 x572"
+                }
+              ]
+            },
+            {
+              "id": 10211,
+              "firstName": "Idell",
+              "lastName": "McKenzie",
+              "age": 82,
+              "address": {
+                "streetAddress": "41351 Littel Burg",
+                "city": "Kiehnmouth",
+                "state": "New York",
+                "zipCode": "82993"
+              },
+              "phoneNumber": [
+                {
+                  "type": "Office",
+                  "number": "(964) 475-5323"
+                },
+                {
+                  "type": "Home",
+                  "number": "(650) 876-7014 x561"
+                }
+              ]
+            },
+            {
+              "id": 831,
+              "firstName": "Claud",
+              "lastName": "Schneider",
+              "age": 73,
+              "address": {
+                "streetAddress": "6181 Okuneva Path",
+                "city": "Eltonport",
+                "state": "Arizona",
+                "zipCode": "64113"
+              },
+              "phoneNumber": [
+                {
+                  "type": "Home",
+                  "number": "889-592-7054 x628"
+                },
+                {
+                  "type": "Office",
+                  "number": "1-491-935-8392 x598"
+                },
+                {
+                  "type": "Office",
+                  "number": "1-806-472-3081 x02315"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "testingMode": false
+    },
+    "javaOptions": {
+      "basePackage": "io.cedrus.apigen",
+      "packagingType": "jar",
+      "framework": [
+        "jaxrs",
+        "jaxrs"
+      ],
+      "springBootDeployment": "tomcat"
+    },
+    "apiOverview": {
+      "apiName": "customer",
+      "apiBasePath": "/api",
+      "apiDescription": "This is sample API being generated by cedrus-api generator"
+    },
+    "dataInput": {
+      "dataInputType": "JSON Input"
+    },
+    "JSONExtraction": [
+      {
+        "resourceName": "Customer",
+        "jsonFilePath": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"number\"},\"firstName\":{\"type\":\"string\"},\"lastName\":{\"type\":\"string\"},\"age\":{\"type\":\"number\"},\"address\":{\"type\":\"object\",\"properties\":{\"streetAddress\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"state\":{\"type\":\"string\"},\"zipCode\":{\"type\":\"string\"}},\"required\":[\"streetAddress\",\"city\",\"state\",\"zipCode\"]},\"phoneNumber\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"type\":{\"type\":\"string\"},\"number\":{\"type\":\"string\"}},\"required\":[\"type\",\"number\"]}}},\"required\":[\"id\",\"firstName\",\"lastName\",\"age\",\"address\",\"phoneNumber\"]}",
+        "isPublic": true,
+        "httpMethods": [
+          "get",
+          "put",
+          "post"
+        ],
+        "httpStatusCodes": [
+          "204",
+          "404",
+          "500"
+        ],
+        "requireTestDataType": "Test Data",
+        "apiFakerMappingFileProvided": true,
+        "apiFakeMappingFileType": "object",
+        "apiFakerMappingFileLocation": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "faker": "random.number"
+            },
+            "firstName": {
+              "type": "string",
+              "faker": "name.firstName"
+            },
+            "lastName": {
+              "type": "string",
+              "faker": "name.lastName"
+            },
+            "age": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 120
+            },
+            "address": {
+              "type": "object",
+              "properties": {
+                "streetAddress": {
+                  "type": "string",
+                  "faker": "address.streetAddress"
+                },
+                "city": {
+                  "type": "string",
+                  "faker": "address.city"
+                },
+                "state": {
+                  "type": "string",
+                  "faker": "address.state"
+                },
+                "zipCode": {
+                  "type": "string",
+                  "faker": "address.zipCode"
+                }
+              },
+              "required": [
+                "streetAddress",
+                "city",
+                "state",
+                "zipCode"
+              ]
+            },
+            "phoneNumber": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "Home",
+                      "Office"
+                    ]
+                  },
+                  "number": {
+                    "type": "string",
+                    "faker": "phone.phoneNumber"
+                  }
+                },
+                "required": [
+                  "type",
+                  "number"
+                ]
+              }
+            }
+          },
+          "required": [
+            "id",
+            "firstName",
+            "lastName",
+            "age",
+            "address",
+            "phoneNumber"
+          ]
+        },
+        "apiFakerMappingJsonType": "Data Schema",
+        "recordsLimit": "5",
+        "requireQuery": false,
+        "whichParameter": null,
+        "queryParameters": {
+          "get": [
+            {
+              "name": "revision",
+              "in": "header",
+              "description": "Needed Revision",
+              "required": true,
+              "type": "string",
+              "default": "R1"
+            }
+          ],
+          "put": [
+            {
+              "name": "revision",
+              "in": "header",
+              "description": "Needed Revision",
+              "required": true,
+              "type": "string",
+              "default": "R1"
+            }
+          ],
+          "post": [
+            {
+              "name": "revision",
+              "in": "header",
+              "description": "Needed Revision",
+              "required": true,
+              "type": "string",
+              "default": "R1"
+            }
+          ]
+        },
+        "fake_data": [
+          {
+            "id": 64097,
+            "firstName": "Adrianna",
+            "lastName": "Abbott",
+            "age": 106,
+            "address": {
+              "streetAddress": "5099 Una Hills",
+              "city": "Tierraborough",
+              "state": "Wyoming",
+              "zipCode": "17774"
+            },
+            "phoneNumber": [
+              {
+                "type": "Home",
+                "number": "1-775-493-1938 x572"
+              }
+            ]
+          },
+          {
+            "id": 10211,
+            "firstName": "Idell",
+            "lastName": "McKenzie",
+            "age": 82,
+            "address": {
+              "streetAddress": "41351 Littel Burg",
+              "city": "Kiehnmouth",
+              "state": "New York",
+              "zipCode": "82993"
+            },
+            "phoneNumber": [
+              {
+                "type": "Office",
+                "number": "(964) 475-5323"
+              },
+              {
+                "type": "Home",
+                "number": "(650) 876-7014 x561"
+              }
+            ]
+          },
+          {
+            "id": 831,
+            "firstName": "Claud",
+            "lastName": "Schneider",
+            "age": 73,
+            "address": {
+              "streetAddress": "6181 Okuneva Path",
+              "city": "Eltonport",
+              "state": "Arizona",
+              "zipCode": "64113"
+            },
+            "phoneNumber": [
+              {
+                "type": "Home",
+                "number": "889-592-7054 x628"
+              },
+              {
+                "type": "Office",
+                "number": "1-491-935-8392 x598"
+              },
+              {
+                "type": "Office",
+                "number": "1-806-472-3081 x02315"
+              }
+            ]
+          }
+        ],
+        "jsonSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number"
+            },
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "age": {
+              "type": "number"
+            },
+            "address": {
+              "type": "object",
+              "properties": {
+                "streetAddress": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "zipCode": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "streetAddress",
+                "city",
+                "state",
+                "zipCode"
+              ]
+            },
+            "phoneNumber": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "number"
+                ]
+              }
+            }
+          },
+          "required": [
+            "id",
+            "firstName",
+            "lastName",
+            "age",
+            "address",
+            "phoneNumber"
+          ]
+        }
+      }
+    ]
+  }
+}
